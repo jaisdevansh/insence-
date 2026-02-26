@@ -4,7 +4,6 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import "./smoke.css"; // We will create this for the complex smoke keyframes and ripples
 
 export default function Hero() {
     const [isMobile, setIsMobile] = useState(false);
@@ -18,6 +17,12 @@ export default function Hero() {
         window.addEventListener("resize", checkMobile);
         return () => window.removeEventListener("resize", checkMobile);
     }, []);
+
+    const fadeInUp = {
+        initial: { opacity: 0, y: 15 },
+        animate: { opacity: 1, y: 0 },
+        transition: { duration: 0.4, ease: "easeOut" }
+    };
 
     const handleRipple = (e: React.MouseEvent<HTMLButtonElement>) => {
         const btn = e.currentTarget;
@@ -179,9 +184,10 @@ export default function Hero() {
                                         src="/images/hero-incense.png"
                                         alt="Temple Incense Experience"
                                         fill
-                                        className="object-cover object-center transform transition-transform duration-[15s] hover:scale-110 ease-out"
+                                        className="object-cover object-center"
                                         sizes="(max-width: 1024px) 100vw, 50vw"
                                         priority
+                                        fetchPriority="high"
                                     />
                                     {/* Luxurious Vignette Overlay */}
                                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_30%,_rgba(0,0,0,0.5)_120%)] pointer-events-none" />
