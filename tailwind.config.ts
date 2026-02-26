@@ -9,11 +9,19 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        background: "#F4E7D3",
+        foreground: "#171717",
+        sandalwood: "#8B5A2B",
+        maroon: "#7B1E1E",
+        gold: "#C6A75E",
+      },
+      fontFamily: {
+        hindi: ["var(--font-noto-serif-devanagari)"],
+        english: ["var(--font-playfair-display)"],
       },
     },
   },
   plugins: [],
 };
 export default config;
+
